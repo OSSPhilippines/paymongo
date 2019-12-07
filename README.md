@@ -1,4 +1,4 @@
-# Node Paymongo
+# Paymongo for Node.js
 
 Node.js SDK for Paymongo API
 
