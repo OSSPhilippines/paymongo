@@ -1,26 +1,34 @@
+import { 
+  createPayment,
+  createToken, 
+  getPayment,
+  getPayments, 
+  getToken
+} from './rest';
+
 export default class Paymongo {
-  constructor(secretKey) {
-    if (!secretKey) throw new Error('API is required!');
-    this.secretKey = secretKey;
+  constructor(secret) {
+    if (!secret) throw new Error('API is required!');
+    this.secret = secret;
   }
 
-  createPayment () {
-    console.log('Create Payment');
+  createPayment (data) {
+    return createPayment(this.secret, data);
   }
 
-  getPayment () {
-    console.log('Get a Payment');
+  getPayment (id) {
+    return getPayment(this.secret, id);
   }
 
   getPayments () {
-    console.log('Get Payments');
+    return getPayments(this.secret);
   }
 
-  getToken () {
-    console.log('Get Token');
+  async getToken (id) {
+    return getToken(this.secret, id);
   }
 
-  createToken () {
-    console.log('Create Token');
+  createToken (data) {
+    return createToken(this.secret, data);
   }
 }
