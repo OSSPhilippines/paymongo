@@ -1,5 +1,5 @@
 {
-  "name": "paymongo-js",
+  "name": "node-paymongo",
   "version": "0.1.2",
   "description": "",
   "main": "index.js",
