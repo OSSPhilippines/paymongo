@@ -4,6 +4,12 @@ Node.js SDK for Paymongo API
 
 ### Contents 
 
+- [Create Token](#create-token)
+- [Get Token](#get-token)
+- [Create Payment](#create-payment)
+- [Get Payment](#get-payment)
+- [Get Payments](#get-payments)
+
 ### Installation
 
 ```bash
@@ -25,6 +31,8 @@ const paymongo = new Paymongo(process.env.SECRET_KEY);
 ```
 
 ## Token
+
+### Create Token
 
 > ### .createToken(payload)
 
@@ -50,6 +58,8 @@ const payload = {
 const token = await paymongo.createToken(payload);
 ```
 
+### Get Token
+
 > ### .getToken(id)
 
 Retrieve a token given an ID. The prefix for the id is `tok_` followed by a unique hash representing the token.
@@ -63,6 +73,8 @@ const token = await paymongo.getToken('tok_6SGC9TBsjduCnV6HiAmXgctt');
 ```
 
 ## Payment
+
+### Create Payment
 
 > ### .createPayment(payload)
 
@@ -92,6 +104,8 @@ const payload = {
 const payment = await paymongo.createPayment(payload);
 ```
 
+### Get Payment
+
 > ### .getPayment(id)
 
 You can retrieve a Payment by providing a payment ID. The prefix for the id is `pay_` followed by a unique hash representing the payment.
@@ -103,6 +117,8 @@ Just pass the payment id to `.getPayment(paymentid)`.
 ```js
 const payment = await paymongo.getPayment('pay_SMizRExCTxdZAbnTaRiRrExN');
 ```
+
+### Get Payments
 
 > ### .getPayments()
 
