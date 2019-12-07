@@ -1,6 +1,6 @@
 # Paymongo for Node.js
 
-Node.js SDK for Paymongo API
+Node.js client for Paymongo API
 
 ### Contents 
 
