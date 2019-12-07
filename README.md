@@ -13,17 +13,17 @@ Node.js SDK for Paymongo API
 ### Installation
 
 ```bash
-$ npm install node-paymongo
+$ npm install paymongo
 ```
 
 ```bash
-$ yarn add node-paymongo
+$ yarn add paymongo
 ```
 
 ### Usage
 
 ```javascript
-import Paymongo from 'node-paymongo';
+import Paymongo from 'paymongo';
 
 // Retrieve the secret key from your paymongo 
 // dashboard under developers tab.
