@@ -1,42 +1,67 @@
-'use strict';
+"use strict";
 
-exports.__esModule = true;
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault.js");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _index = _interopRequireDefault(require("@babel/runtime/regenerator/index.js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck.js"));
 
-var Paymongo = function () {
-  function Paymongo(secretKey) {
-    (0, _classCallCheck3.default)(this, Paymongo);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass.js"));
 
-    if (!secretKey) throw new Error('API is required!');
-    this.secretKey = secretKey;
+var _rest = require("./rest");
+
+var Paymongo =
+/*#__PURE__*/
+function () {
+  function Paymongo(secret) {
+    (0, _classCallCheck2["default"])(this, Paymongo);
+    if (!secret) throw new Error('API is required!');
+    this.secret = secret;
   }
 
-  Paymongo.prototype.createPayment = function createPayment() {
-    console.log('Create Payment');
-  };
+  (0, _createClass2["default"])(Paymongo, [{
+    key: "createPayment",
+    value: function createPayment(data) {
+      return (0, _rest.createPayment)(this.secret, data);
+    }
+  }, {
+    key: "getPayment",
+    value: function getPayment(id) {
+      return (0, _rest.getPayment)(this.secret, id);
+    }
+  }, {
+    key: "getPayments",
+    value: function getPayments() {
+      return (0, _rest.getPayments)(this.secret);
+    }
+  }, {
+    key: "getToken",
+    value: function getToken(id) {
+      return _index["default"].async(function getToken$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              return _context.abrupt("return", (0, _rest.getToken)(this.secret, id));
 
-  Paymongo.prototype.getPayment = function getPayment() {
-    console.log('Get a Payment');
-  };
-
-  Paymongo.prototype.getPayments = function getPayments() {
-    console.log('Get Payments');
-  };
-
-  Paymongo.prototype.getToken = function getToken() {
-    console.log('Get Token');
-  };
-
-  Paymongo.prototype.createToken = function createToken() {
-    console.log('Create Token');
-  };
-
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, null, this);
+    }
+  }, {
+    key: "createToken",
+    value: function createToken(data) {
+      return (0, _rest.createToken)(this.secret, data);
+    }
+  }]);
   return Paymongo;
 }();
 
-exports.default = Paymongo;
+exports["default"] = Paymongo;
