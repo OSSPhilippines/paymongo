@@ -1,8 +1,8 @@
-![npm](https://img.shields.io/npm/v/paymongo?style=for-the-badge) ![npm bundle size](https://img.shields.io/bundlephobia/min/paymongo?style=for-the-badge)
-
 # Paymongo for Node.js
 
 Lighweight node.js client for Paymongo API
+
+![npm](https://img.shields.io/npm/v/paymongo?style=for-the-badge) ![npm bundle size](https://img.shields.io/bundlephobia/min/paymongo?style=for-the-badge)
 
 ### Contents 
 
