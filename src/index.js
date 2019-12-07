@@ -7,20 +7,20 @@ import {
 } from './rest';
 
 export default class Paymongo {
-  constructor(secret) {
+  constructor (secret) {
     if (!secret) throw new Error('API is required!');
     this.secret = secret;
   }
 
-  createPayment (data) {
+  async createPayment (data) {
     return createPayment(this.secret, data);
   }
 
-  getPayment (id) {
+  async getPayment (id) {
     return getPayment(this.secret, id);
   }
 
-  getPayments () {
+  async getPayments () {
     return getPayments(this.secret);
   }
 
@@ -28,7 +28,7 @@ export default class Paymongo {
     return getToken(this.secret, id);
   }
 
-  createToken (data) {
+  async createToken (data) {
     return createToken(this.secret, data);
   }
 }
