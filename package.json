@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jofftiquez/node-paymongo.git"
+    "url": "git+https://github.com/jofftiquez/paymongo.git"
   },
   "author": "Jofferson R Tiquez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jofftiquez/node-paymongo/issues"
+    "url": "https://github.com/jofftiquez/paymongo/issues"
   },
-  "homepage": "https://github.com/jofftiquez/node-paymongo#readme",
+  "homepage": "https://github.com/jofftiquez/paymongo#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
