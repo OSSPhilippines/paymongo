@@ -1,17 +1,31 @@
-name: CI
+name: Deploy
 
-on: [push]
+on: 
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  build:
-
+  deploy_to_live:
+    name: Publish to NPM
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    strategy:
+      matrix:
+        node: [10]
+    steps: 
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install yarn
+        run: npm install yarn@latest -g
+      - name: Install dependencies
+        run: yarn
+      - name: Run build
+        run: yarn build
+      - name: Run test
+        run: yarn test
+      - name: Authenticate with registry
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/repo/.npmrc
+      - name: Run publish
+        run: npm publish
