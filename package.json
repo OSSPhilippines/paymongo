@@ -32,7 +32,5 @@
     "cross-env": "^6.0.3",
     "jest": "^24.9.0"
   },
-  "dependencies": {
-    "axios": "^0.19.0"
-  }
+  "dependencies": {}
 }

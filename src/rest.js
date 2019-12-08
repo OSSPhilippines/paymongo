@@ -1,40 +1,54 @@
-import axios from 'axios';
+import request from 'request';
 import {
   validateTokenPayload,
   validatePaymentPayload
 } from './validator';
 const PAYMONGO_API_URL = 'https://api.paymongo.com/v1';
 
+async function makeRequest (opts) {
+  return new Promise((resolve, reject) => {
+    const { secret, method, path, data } = opts;
+    const options = {
+      method,
+      url: `${PAYMONGO_API_URL}/${path}`,
+      json: true,
+      auth: {
+        username: secret,
+        password: ''
+      }
+    };
+
+    if (data) {
+      options.body = data;
+    }
+
+    request(options, (err, res, body) => {
+      if (err) reject(err);
+      resolve(body);
+    });
+  });
+}
+
 export const createToken = async (secret, data) => {
   const validate = validateTokenPayload(data);
   if (!validate.valid) {
     throw new Error(validate.message);
   }
-  const res = await axios({
-    method: 'post',
-    url: `${PAYMONGO_API_URL}/tokens`,
-    auth: {
-      username: secret,
-      password: ''
-    },
+  return makeRequest({
+    secret,
+    method: 'POST',
+    path: `/tokens`,
     data
   });
-  
-  return res.data;
 }
 
 export const getToken = async (secret, id) => {
   if (!id) throw new Error(`Token id is required.`);
-  const res = await axios({
-    method: 'get',
-    url: `${PAYMONGO_API_URL}/tokens/${id}`,
-    auth: {
-      username: secret,
-      password: ''
-    }
+  return makeRequest({
+    secret,
+    method: 'GET',
+    path: `/tokens/${id}`
   });
-
-  return res.data;
 }
 
 export const createPayment = async (secret, data) => {
@@ -42,42 +56,27 @@ export const createPayment = async (secret, data) => {
   if (!validate.valid) {
     throw new Error(validate.message);
   }
-  const res = await axios({
-    method: 'post',
-    url: `${PAYMONGO_API_URL}/payments`,
-    auth: {
-      username: secret,
-      password: ''
-    },
+  return makeRequest({
+    secret,
+    method: 'POST',
+    path: `/payments`,
     data
   });
-  
-  return res.data;
 }
 
 export const getPayment = async (secret, id) => {
   if (!id) throw new Error(`Payment id is required.`);
-  const res = await axios({
-    method: 'get',
-    url: `${PAYMONGO_API_URL}/payments/${id}`,
-    auth: {
-      username: secret,
-      password: ''
-    }
+  return makeRequest({
+    secret,
+    method: 'GET',
+    path: `/payments/${id}`
   });
-
-  return res.data;
 }
 
 export const getPayments = async (secret) => {
-  const res = await axios({
-    method: 'get',
-    url: `${PAYMONGO_API_URL}/payments`,
-    auth: {
-      username: secret,
-      password: ''
-    }
+  return makeRequest({
+    secret,
+    method: 'GET',
+    path: '/payments'
   });
-
-  return res.data;
 }
