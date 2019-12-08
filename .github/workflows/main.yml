@@ -6,8 +6,8 @@ on:
       - 'v*'
 
 jobs:
-  deploy_to_live:
-    name: Publish to NPM
+  build-test-publish:
+    name: Build, Test, and Publish to NPM
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+          registry-url: https://registry.npmjs.org/
       - name: Install yarn
         run: npm install yarn@latest -g
       - name: Install dependencies
@@ -25,7 +26,8 @@ jobs:
         run: yarn build
       - name: Run test
         run: yarn test
-      - name: Authenticate with registry
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/repo/.npmrc
       - name: Run publish
+        run: npm ci
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
