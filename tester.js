@@ -1,4 +1,4 @@
-// const Paymongo = require('./dist').default;
+// const Paymongo = require('./dist');
 
 // const paymongo = new Paymongo('sk_test_2h6QPgpJtPtW9Drc47bbaBe4');
 
@@ -58,4 +58,3 @@
 // }).catch(error => {
 //   console.log(error);
 // });
-
