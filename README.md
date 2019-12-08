@@ -1,6 +1,6 @@
 # Paymongo for Node.js
 
-Lighweight (5KB) node.js client for Paymongo API
+Lighweight (5KB) node.js client for Paymongo API.
 
 ![npm](https://img.shields.io/npm/v/paymongo?style=for-the-badge) ![npm bundle size](https://img.shields.io/bundlephobia/min/paymongo?style=for-the-badge)
 
