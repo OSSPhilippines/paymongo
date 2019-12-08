@@ -2,14 +2,13 @@
   "name": "paymongo",
   "version": "0.1.9",
   "description": "",
-  "main": "dist/index.min.js",
+  "main": "dist/index.js",
   "jest": {
     "verbose": true
   },
   "scripts": {
     "test": "jest",
-    "prebuild": "rimraf dist",
-    "build": "rollup -c",
+    "build": "rm -rf dist && cross-env NODE_ENV=production babel src -d dist",
     "try": "node tester.js"
   },
   "repository": {
@@ -31,11 +30,7 @@
     "@babel/runtime": "^7.7.5",
     "babel-minify": "^0.5.1",
     "cross-env": "^6.0.3",
-    "jest": "^24.9.0",
-    "rimraf": "^3.0.0",
-    "rollup": "^1.27.9",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-uglify": "^6.0.3"
+    "jest": "^24.9.0"
   },
   "dependencies": {}
 }
