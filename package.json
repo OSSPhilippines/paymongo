@@ -2,7 +2,7 @@
   "name": "paymongo",
   "version": "0.1.9",
   "description": "",
-  "main": "dist/index.min.js",
+  "main": "dist/index.js",
   "jest": {
     "verbose": true
   },
