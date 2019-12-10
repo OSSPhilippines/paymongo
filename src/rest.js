@@ -24,6 +24,12 @@ async function makeRequest (opts) {
 
     request(options, (err, res, body) => {
       if (err) reject(err);
+      if (body.errors) {
+        reject({
+          ...body.errors[0],
+          message: body.errors[0].detail
+        });
+      }
       resolve(body);
     });
   });
