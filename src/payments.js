@@ -2,12 +2,13 @@ import { makeRequest } from './rest';
 
 /**
  * These are the required properties
- * @param  {strong} secret api private key
- * @param  {Object} data
- * @property {string} data.attributes.amount amount int32
- * @property {Object} source the source object from checkout
- * @property {string} source.id
- * @property {string} source.type
+ * @param  {string} secret api private key
+ * @param  {Object} data payload
+ * @property {Object} data.attributes payload attributes
+ * @property {number} data.attributes.amount amount int32
+ * @property {Object} data.attributes.source the source object from checkout
+ * @property {string} data.attributes.source.id
+ * @property {string} data.attributes.source.type
  */
 export const createPayment = async (secret, data) => {
   if (!data) throw new Error('Data is required!');
@@ -18,6 +19,7 @@ export const createPayment = async (secret, data) => {
     data
   });
 }
+
 /**
  * @param  {string} secret api private key
  * @param  {string} id payment id
@@ -29,8 +31,11 @@ export const getPayment = async (secret, id) => {
     method: 'GET',
     path: `/payments/${id}`
   });
-}
 
+}
+/**
+ * @param  {string} secret api private key
+ */
 export const getPayments = async (secret) => {
   return makeRequest({
     secret,
