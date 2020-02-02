@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist && npm run test",
     "build": "rollup -c",
     "try": "node tester.js"
   },
