@@ -12,7 +12,8 @@ import { makeRequest } from './rest';
  * @property {string} data.attributes.redirect.failed error url
  */
 export const createSource = async (secret, data) => {
-  if (!data) throw new Error('Data is required!');
+  if (Object.entries(data).length === 0 || !data.constructor === Object) 
+    throw new Error('Data is required!');
   return makeRequest({
     secret,
     method: 'POST',
