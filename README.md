@@ -4,13 +4,18 @@ Lighweight (5kB) node.js client for Paymongo API.
 
 ![npm bundle size](https://img.shields.io/bundlephobia/min/paymongo?style=flat-square) ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jofftiquez/paymongo/Deploy/v0.1.16?label=test&style=flat-square) ![npm](https://img.shields.io/npm/v/paymongo?style=flat-square) ![npm](https://img.shields.io/npm/dw/paymongo?style=flat-square)
 
-### Contents 
-
-- [Create Token](#create-token)
-- [Get Token](#get-token)
-- [Create Payment](#create-payment)
-- [Get Payment](#get-payment)
-- [Get Payments](#get-payments)
+- [Paymongo for Node.js](#paymongo-for-nodejs)
+    - [Installation](#installation)
+    - [Usage](#usage)
+  - [Tokens](#tokens)
+    - [Create Token](#create-token)
+    - [Get Token](#get-token)
+  - [Sources](#sources)
+    - [Create a Source](#create-a-source)
+  - [Payments](#payments)
+    - [Create Payment](#create-payment)
+    - [Get Payment](#get-payment)
+    - [Get Payments](#get-payments)
 
 ### Installation
 
@@ -32,7 +37,7 @@ import Paymongo from 'paymongo';
 const paymongo = new Paymongo(process.env.SECRET_KEY);
 ```
 
-## Token
+## Tokens
 
 ### Create Token
 
@@ -74,7 +79,36 @@ Just pass the token id to `.getToken(tokenId)`.
 const token = await paymongo.getToken('tok_6SGC9TBsjduCnV6HiAmXgctt');
 ```
 
-## Payment
+## Sources
+
+### Create a Source
+
+> ### .createSource(payload)
+
+Creates a Source
+
+Refer to [Paymongo documentation](https://developers.paymongo.com/reference#post_sources-1) for payload guidelines.
+
+**Sample**
+
+```js
+const payload = {
+  data: {
+    attributes: {
+      type: '', // Not stated in their doc what the enum is
+      amount: 1000,
+      currency: 'php',
+      redirect: {
+        success: 'https://your-website.com/success',
+        failed: 'https://your-website.com/failed'
+      }
+    }
+  }
+}
+const token = await paymongo.createToken(payload);
+```
+
+## Payments
 
 ### Create Payment
 
