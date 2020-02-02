@@ -24,10 +24,8 @@ jobs:
         run: yarn
       - name: Run build
         run: yarn build
-      # TODO: bring back test
-      # Skipping test for now
-      # - name: Run test
-        # run: yarn test
+      - name: Run test
+        run: yarn test
       - name: Run CI
         run: npm ci
       - name: Run publish
