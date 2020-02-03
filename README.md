@@ -16,6 +16,11 @@ Lighweight (5kB) node.js client for Paymongo API.
     - [Create Payment](#create-payment)
     - [Get Payment](#get-payment)
     - [Get Payments](#get-payments)
+  - [Webhooks](#webhooks)
+    - [Create a Webhook](#create-a-webhook)
+    - [List all Webhooks](#list-all-webhooks)
+    - [Toggle a Webhook (Enable or Disable a Webhook)](#toggle-a-webhook-enable-or-disable-a-webhook)
+    - [Update a Webhook](#update-a-webhook)
 
 ### Installation
 
@@ -61,7 +66,8 @@ const payload = {
       cvc: '111'
     }
   }
-}
+};
+
 const token = await paymongo.createToken(payload);
 ```
 
@@ -104,8 +110,9 @@ const payload = {
       }
     }
   }
-}
-const token = await paymongo.createToken(payload);
+};
+
+const source = await paymongo.createSource(payload);
 ```
 
 ## Payments
@@ -136,7 +143,8 @@ const payload = {
       }
     }
   }
-}
+};
+
 const payment = await paymongo.createPayment(payload);
 ```
 
@@ -167,5 +175,97 @@ Just pass the payment id to `.getPayments()`.
 ```js
 const payments = await paymongo.getPayments();
 ```
+
+## Webhooks
+
+### Create a Webhook
+
+> ### .createWebhook(payload)
+
+Creates a webhook.
+
+**Payload**
+
+Refer to [Paymongo documentation](https://developers.paymongo.com/reference#post_webhooks-1) for payload guidelines.
+
+**Sample**
+
+```js
+const payload = {
+  data: {
+    attributes: {
+      url: 'https://your-url.com',
+      events: [
+        // It is not specified in their official documentation
+        // what the available events are yet.
+      ]
+    }
+  }
+};
+
+const webhook = await paymongo.createWebhook(payload);
+```
+
+### List all Webhooks
+
+> ### .getWebhooks()
+
+Returns all the webhooks you previously created, with the most recent webhooks returned first.
+
+**Sample**
+
+```js
+const webhooks = await paymongo.getWebhooks();
+```
+
+### Toggle a Webhook (Enable or Disable a Webhook)
+
+> ### .toggleWebhook(action, id)
+
+Enables or disables a webhook.
+
+**Params**
+
+| Param | Description |
+| ----- | ----------- |
+| action:string | Action type, value must be one of 'enable' or 'disable'. |
+| id:string | The webhook id. |
+
+**Sample**
+
+*Enable*
+
+```js
+const webhook = await paymongo.toggleWebhook('enable', 'webhook-123');
+```
+
+*Disable*
+
+```js
+const webhook = await paymongo.toggleWebhook('disable', 'webhook-123');
+```
+
+### Update a Webhook
+
+> ### .updateWebhook(payload)
+
+Updates a Webhook.
+
+**Payload**
+
+Refer to [Paymongo documentation](https://developers.paymongo.com/reference#post_webhooks-1) for payload guidelines.
+
+```js
+const payload = {
+  data: {
+    attributes: {
+      url: 'https://your-url.com'
+    }
+  }
+};
+
+const webhook = await paymongo.updateWebhook(payload);
+```
+
 
 Made with :heart: by Jofferson Ramirez Tiquez
