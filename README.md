@@ -95,7 +95,7 @@ Refer to [Paymongo documentation](https://developers.paymongo.com/reference#post
 const payload = {
   data: {
     attributes: {
-      type: '', // Not stated in their doc what the enum is
+      type: 'gcash', // The only option for now accordint to their support
       amount: 1000,
       currency: 'php',
       redirect: {
