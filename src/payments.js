@@ -34,6 +34,7 @@ export const getPayment = async (secret, id) => {
   });
 
 }
+
 /**
  * @param  {string} secret api private key
  */
