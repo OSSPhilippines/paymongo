@@ -1,6 +1,7 @@
 import { createToken, getToken } from './tokens';
 import { createSource } from './sources';
 import { createPayment, getPayment, getPayments } from './payments';
+import { createWebhook, getWebhooks, toggleWebhook, updateWebhook } from './webhooks';
 
 export default class Paymongo {
   constructor (secret) {
@@ -37,5 +38,22 @@ export default class Paymongo {
 
   async getPayments (data) {
     return getPayments(this.secret, data);
+  }
+
+  // WEBHOOKS
+  async createWebhook (data) {
+    return createWebhook(this.secret, data);
+  }
+  
+  async getWebhooks () {
+    return getWebhooks(this.secret);
+  }
+  
+  async toggleWebhook (action, id) {
+    return toggleWebhook(this.secret, action, id);
+  }
+  
+  async updateWebhook (data) {
+    return updateWebhook(this.secret, data);
   }
 }
