@@ -17,9 +17,9 @@ export const createToken = async (secret, data) => {
     secret,
     method: 'POST',
     path: `/tokens`,
-    data
+    data,
   });
-}
+};
 
 /**
  * @param {string} secret api private key
@@ -30,6 +30,6 @@ export const getToken = async (secret, id) => {
   return makeRequest({
     secret,
     method: 'GET',
-    path: `/tokens/${id}`
+    path: `/tokens/${id}`,
   });
-}
+};

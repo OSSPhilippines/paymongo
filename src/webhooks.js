@@ -15,9 +15,9 @@ export const createWebhook = async (secret, data) => {
     secret,
     method: 'POST',
     path: `/webhooks`,
-    data
+    data,
   });
-}
+};
 
 /**
  * @param  {string} secret api private key
@@ -26,9 +26,9 @@ export const getWebhooks = async (secret) => {
   return makeRequest({
     secret,
     method: 'GET',
-    path: '/webhooks'
+    path: '/webhooks',
   });
-}
+};
 
 /**
  * @param  {string} secret api private key
@@ -42,9 +42,9 @@ export const toggleWebhook = async (secret, action, id) => {
   return makeRequest({
     secret,
     method: 'POST',
-    path: `/webhooks/${id}/${action}`
+    path: `/webhooks/${id}/${action}`,
   });
-}
+};
 
 /**
  * These are the required properties
@@ -60,6 +60,6 @@ export const updateWebhook = async (secret, data) => {
     secret,
     method: 'PUT',
     path: `/webhooks`,
-    data
+    data,
   });
-}
+};

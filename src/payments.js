@@ -17,9 +17,9 @@ export const createPayment = async (secret, data) => {
     secret,
     method: 'POST',
     path: `/payments`,
-    data
+    data,
   });
-}
+};
 
 /**
  * @param  {string} secret api private key
@@ -30,10 +30,10 @@ export const getPayment = async (secret, id) => {
   return makeRequest({
     secret,
     method: 'GET',
-    path: `/payments/${id}`
+    path: `/payments/${id}`,
   });
 
-}
+};
 
 /**
  * @param  {string} secret api private key
@@ -42,6 +42,6 @@ export const getPayments = async (secret) => {
   return makeRequest({
     secret,
     method: 'GET',
-    path: '/payments'
+    path: '/payments',
   });
-}
+};

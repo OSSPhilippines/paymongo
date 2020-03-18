@@ -11,8 +11,8 @@ describe('Tokens', () => {
   describe('|- createToken', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
       data: {
-        id: 'tok_123abc'
-      }
+        id: 'tok_123abc',
+      },
     }));
 
     it('should return object "data"', async () => {
@@ -33,12 +33,12 @@ describe('Tokens', () => {
     it('should return object with id', async () => {
 
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id: 'tok_123abc'
+        id: 'tok_123abc',
       }));
 
       const result = await getToken('fake-private-key', 'tok_123abc');
       expect(result).toHaveProperty('id');
       expect(result.id).toEqual('tok_123abc');
     });
-  })
+  });
 });

@@ -10,7 +10,7 @@ beforeEach(() => {
 describe('Sources', () => {
   describe('|- createSource', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
-      id: 'fake-id'
+      id: 'fake-id',
     }));
 
     it('should return object with id', async () => {
