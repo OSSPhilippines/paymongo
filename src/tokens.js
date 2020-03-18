@@ -4,11 +4,11 @@ import { makeRequest } from './rest';
  * These are the required properties
  * @param  {string} secret api private key
  * @param  {Object} data payload
- * @property {Object} data.attributes payload attributes
- * @property {string} data.attributes.number credit card number
- * @property {number} data.attributes.exp_month credit card expiry month `float`
- * @property {number} data.attributes.exp_year credit card expiry year `float`
- * @property {string} data.attributes.cvc credit card cvc
+ * @param {Object} data.attributes payload attributes
+ * @param {string} data.attributes.number credit card number
+ * @param {number} data.attributes.exp_month credit card expiry month `float`
+ * @param {number} data.attributes.exp_year credit card expiry year `float`
+ * @param {string} data.attributes.cvc credit card cvc
  */
 export const createToken = async (secret, data) => {
   if (Object.entries(data).length === 0 || !data.constructor === Object) 

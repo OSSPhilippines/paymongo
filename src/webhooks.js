@@ -4,9 +4,9 @@ import { makeRequest } from './rest';
  * These are the required properties
  * @param  {string} secret api private key
  * @param  {Object} data payload
- * @property {Object} data.attributes payload attributes
- * @property {string} data.attributes.url hook url
- * @property {string[]} data.attributes.events array of events
+ * @param {Object} data.attributes payload attributes
+ * @param {string} data.attributes.url hook url
+ * @param {string[]} data.attributes.events array of events
  */
 export const createWebhook = async (secret, data) => {
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
