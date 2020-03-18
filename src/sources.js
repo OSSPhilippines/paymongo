@@ -18,6 +18,6 @@ export const createSource = async (secret, data) => {
     secret,
     method: 'POST',
     path: `/sources`,
-    data
+    data,
   });
-}
+};

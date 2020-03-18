@@ -10,7 +10,7 @@ beforeEach(() => {
 describe('Payments', () => {
   describe('|- createPayment', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
-      id: 'pay_123abc'
+      id: 'pay_123abc',
     }));
 
     it('should return object with id', async () => {
@@ -32,7 +32,7 @@ describe('Payments', () => {
     it('should return object with id', async () => {
 
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id: 'pay_123abc'
+        id: 'pay_123abc',
       }));
 
       const result = await getPayment('fake-private-key', 'pay_123abc');
@@ -45,7 +45,7 @@ describe('Payments', () => {
     it('should return data[]', async () => {
 
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        data: []
+        data: [],
       }));
 
       const result = await getPayments('fake-private-key', 'pay_123abc');

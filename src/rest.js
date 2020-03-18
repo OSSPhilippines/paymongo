@@ -10,8 +10,8 @@ export const makeRequest = async (opts) => {
       json: true,
       auth: {
         username: secret,
-        password: ''
-      }
+        password: '',
+      },
     };
 
     if (data) {
@@ -23,10 +23,10 @@ export const makeRequest = async (opts) => {
       if (body.errors) {
         reject({
           ...body.errors[0],
-          message: body.errors[0].detail
+          message: body.errors[0].detail,
         });
       }
       resolve(body);
     });
   });
-}
+};

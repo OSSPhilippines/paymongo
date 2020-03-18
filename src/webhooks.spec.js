@@ -11,8 +11,8 @@ describe('Webhooks', () => {
   describe('|- createWebhook', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
       data: {
-        id: 'fake-id'
-      }
+        id: 'fake-id',
+      },
     }));
 
     it('should return object with id', async () => {
@@ -31,7 +31,7 @@ describe('Webhooks', () => {
 
   describe('|- getWebhooks', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
-      data: []
+      data: [],
     }));
 
     it('should return data[]', async () => {
@@ -44,8 +44,8 @@ describe('Webhooks', () => {
     it('should return object with id for action enable', async () => {
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         data: {
-          id: 'fake-id-123'
-        }
+          id: 'fake-id-123',
+        },
       }));
       
       const result = await toggleWebhook('fake-private-key', 'enable', 'fake-id-123');
@@ -56,8 +56,8 @@ describe('Webhooks', () => {
     it('should return object with id for action disable', async () => {
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         data: {
-          id: 'fake-id-123'
-        }
+          id: 'fake-id-123',
+        },
       }));
 
       const result = await toggleWebhook('fake-private-key', 'disable', 'fake-id-123');
@@ -74,7 +74,7 @@ describe('Webhooks', () => {
     it('should return object with id', async () => {
 
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id: 'fake-id-123'
+        id: 'fake-id-123',
       }));
 
       const result = await updateWebhook('fake-private-key', { a: 1 });
