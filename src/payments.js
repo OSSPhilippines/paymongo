@@ -4,11 +4,11 @@ import { makeRequest } from './rest';
  * These are the required properties
  * @param  {string} secret api private key
  * @param  {Object} data payload
- * @property {Object} data.attributes payload attributes
- * @property {number} data.attributes.amount amount int32
- * @property {Object} data.attributes.source the source object from checkout
- * @property {string} data.attributes.source.id
- * @property {string} data.attributes.source.type
+ * @param {Object} data.attributes payload attributes
+ * @param {number} data.attributes.amount amount int32
+ * @param {Object} data.attributes.source the source object from checkout
+ * @param {string} data.attributes.source.id
+ * @param {string} data.attributes.source.type
  */
 export const createPayment = async (secret, data) => {
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
