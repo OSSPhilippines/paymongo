@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "npx eslint --fix -c .eslintrc",
+    "lint": "npx eslint src --fix -c .eslintrc",
     "prebuild": "rimraf dist && npm run test",
     "build": "rollup -c",
     "try": "node tester.js"
