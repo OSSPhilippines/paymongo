@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-test-publish:
-    name: Lint,  Test, Build, and Publish to NPM
+    name: Lint, Test, Build, and Publish to NPM
     runs-on: ubuntu-latest
     strategy:
       matrix:
