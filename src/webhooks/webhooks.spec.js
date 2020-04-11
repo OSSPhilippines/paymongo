@@ -1,5 +1,5 @@
 import { makeRequest } from '../utils/rest';
-import { createWebhook, getWebhooks, toggleWebhook, updateWebhook } from './webhooks';
+import { createWebhook, retrieveWebhook, listWebhooks, toggleWebhook } from './webhooks';
 import faker from 'faker';
 const fakePrivateKey = faker.random.uuid();
 
@@ -11,10 +11,9 @@ beforeEach(() => {
 
 describe('Webhooks', () => {
   describe('|- createWebhook', () => {
+    const id = faker.random.uuid();
     makeRequest.mockImplementationOnce(() => Promise.resolve({
-      data: {
-        id: 'fake-id',
-      },
+      data: { id },
     }));
 
     it('should return object with id', async () => {
@@ -31,56 +30,55 @@ describe('Webhooks', () => {
     });
   });
 
-  describe('|- getWebhooks', () => {
-    makeRequest.mockImplementationOnce(() => Promise.resolve({
-      data: [],
-    }));
+  describe('|- retrieveWebhook', () => {
+    const id = 'hook_123';
+    it('should return object with id', async () => {
+      makeRequest.mockImplementationOnce(() => Promise.resolve({
+        id
+      }));
 
+      const result = await retrieveWebhook(fakePrivateKey, id);
+      expect(result).toHaveProperty('id');
+      expect(result.id).toEqual(id);
+    });
+  });
+
+
+  describe('|- listWebhooks', () => {
     it('should return data[]', async () => {
-      const result = await getWebhooks(fakePrivateKey, 'fake-id-123');
+      makeRequest.mockImplementationOnce(() => Promise.resolve({
+        data: [],
+      }));
+
+      const result = await listWebhooks(fakePrivateKey, 'fake-id-123');
       expect(Array.isArray(result.data)).toBe(true);
     });
   });
 
   describe('|- toggleWebhook', () => {
+    const id = faker.random.uuid();
     it('should return object with id for action enable', async () => {
-      const id = faker.random.uuid();
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         data: { id },
       }));
       
-      const result = await toggleWebhook(fakePrivateKey, 'enable', id);
+      const result = await toggleWebhook(fakePrivateKey, id, 'enable');
       expect(result).toHaveProperty('data.id');
       expect(result.data.id).toEqual(id);
     });
     
     it('should return object with id for action disable', async () => {
-      const id = faker.random.uuid();
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         data: { id },
       }));
 
-      const result = await toggleWebhook(fakePrivateKey, 'disable', id);
+      const result = await toggleWebhook(fakePrivateKey, id, 'disable');
       expect(result).toHaveProperty('data.id');
       expect(result.data.id).toEqual(id);
     });
 
     it('should throw', async () => {
-      const id = faker.random.uuid();
-      expect(toggleWebhook(fakePrivateKey, 'not-enable-or-disable', id)).rejects.toEqual(expect.any(Error));
-    });
-  });
-  
-  describe('|- updateWebhook', () => {
-    it('should return object with id', async () => {
-      const id = faker.random.uuid();
-      makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id
-      }));
-
-      const result = await updateWebhook(fakePrivateKey, { a: 1 });
-      expect(result).toHaveProperty('id');
-      expect(result.id).toEqual(id);
+      expect(toggleWebhook(fakePrivateKey, id, 'not-enable-or-disable')).rejects.toEqual(expect.any(Error));
     });
   });
 });
