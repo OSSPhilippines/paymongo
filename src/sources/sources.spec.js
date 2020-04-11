@@ -1,5 +1,7 @@
 import { makeRequest } from '../utils/rest';
 import { createSource } from './sources';
+import faker from 'faker';
+const fakePrivateKey = faker.random.uuid();
 
 jest.mock('../utils/rest');
 
@@ -10,20 +12,20 @@ beforeEach(() => {
 describe('Sources', () => {
   describe('|- createSource', () => {
     makeRequest.mockImplementationOnce(() => Promise.resolve({
-      id: 'fake-id',
+      id: fakePrivateKey,
     }));
 
     it('should return object with id', async () => {
-      const result = await createSource('fake-private-key', { a: 1 });
+      const result = await createSource(fakePrivateKey, { a: 1 });
       expect(result).toHaveProperty('id');
     });
     
     it('should throw', async () => {
-      expect(createSource('fake-private-key', {})).rejects.toEqual(expect.any(Error));
-      expect(createSource('fake-private-key', null)).rejects.toEqual(expect.any(Error));
-      expect(createSource('fake-private-key', undefined)).rejects.toEqual(expect.any(Error));
-      expect(createSource('fake-private-key', new Date())).rejects.toEqual(expect.any(Error));
-      expect(createSource('fake-private-key', [])).rejects.toEqual(expect.any(Error));
+      expect(createSource(fakePrivateKey, {})).rejects.toEqual(expect.any(Error));
+      expect(createSource(fakePrivateKey, null)).rejects.toEqual(expect.any(Error));
+      expect(createSource(fakePrivateKey, undefined)).rejects.toEqual(expect.any(Error));
+      expect(createSource(fakePrivateKey, new Date())).rejects.toEqual(expect.any(Error));
+      expect(createSource(fakePrivateKey, [])).rejects.toEqual(expect.any(Error));
     });
   });
 });
