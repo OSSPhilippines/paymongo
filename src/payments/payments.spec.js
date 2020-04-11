@@ -1,5 +1,5 @@
 import { makeRequest } from '../utils/rest';
-import { createPayment, getPayment, getPayments } from './payments';
+import { createPayment, retrievePayment, listPayments } from './payments';
 import faker from 'faker';
 const fakePrivateKey = faker.random.uuid();
 
@@ -29,25 +29,25 @@ describe('Payments', () => {
     });
   });
 
-  describe('|- getPayment', () => {
+  describe('|- retrievePayment', () => {
     it('should return object with id', async () => {
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         id: 'pay_123abc',
       }));
 
-      const result = await getPayment(fakePrivateKey, 'pay_123abc');
+      const result = await retrievePayment(fakePrivateKey, 'pay_123abc');
       expect(result).toHaveProperty('id');
       expect(result.id).toEqual('pay_123abc');
     });
   });
   
-  describe('|- getPayments', () => {
+  describe('|- listPayments', () => {
     it('should return data[]', async () => {
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         data: [],
       }));
 
-      const result = await getPayments(fakePrivateKey, 'pay_123abc');
+      const result = await listPayments(fakePrivateKey, 'pay_123abc');
       expect(Array.isArray(result.data)).toBe(true);
     });
   });
