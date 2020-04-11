@@ -1,25 +1,22 @@
-import { createToken, getToken } from './tokens';
-import { createSource } from './sources';
-import { createPayment, getPayment, getPayments } from './payments';
-import { createWebhook, getWebhooks, toggleWebhook, updateWebhook } from './webhooks';
+import { createToken, retrieveToken } from './tokens/index';
+import { createSource } from './sources/index';
+import { createPayment, getPayment, getPayments } from './payments/index';
+import { createWebhook, getWebhooks, toggleWebhook, updateWebhook } from './webhooks/index';
 
 export default class Paymongo {
   constructor (secret) {
     if (Paymongo.instance instanceof Paymongo) return Paymongo.instance;
     if (!secret) throw new Error('API key is required!');
     this.secret = secret;
+
+    this.tokens = {
+      create: createToken(this.secret, data),
+      retrieve: retrieveToken(this.secret, id),
+    };
+
     Object.freeze(this.secret);
     Object.freeze(this);
     Paymongo.instance = this;
-  }
-
-  // TOKENS
-  async createToken (data) {
-    return createToken(this.secret, data);
-  }
-
-  async getToken (id) {
-    return getToken(this.secret, id);
   }
 
   // SOURCES
