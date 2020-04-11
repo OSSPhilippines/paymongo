@@ -2,8 +2,8 @@ import { makeRequest } from '../utils/rest';
 
 /**
  * These are the required properties
- * @param  {string} secret api private key
- * @param  {Object} data payload
+ * @param {string} secret api private key
+ * @param {Object} data payload
  * @param {Object} data.attributes payload attributes
  * @param {string} data.attributes.number credit card number
  * @param {number} data.attributes.exp_month credit card expiry month `float`
