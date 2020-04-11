@@ -1,5 +1,7 @@
 import { makeRequest } from '../utils/rest';
 import { createToken, getToken } from './tokens';
+import faker from 'faker';
+const fakePrivateKey = faker.random.uuid();
 
 jest.mock('../utils/rest');
 
@@ -16,16 +18,16 @@ describe('Tokens', () => {
     }));
 
     it('should return object "data"', async () => {
-      const result = await createToken('fake-private-key', { a: 1 });
+      const result = await createToken(fakePrivateKey, { a: 1 });
       expect(result).toHaveProperty('data.id');
     });
 
     it('should throw', async () => {
-      expect(createToken('fake-private-key', {})).rejects.toEqual(expect.any(Error));
-      expect(createToken('fake-private-key', null)).rejects.toEqual(expect.any(Error));
-      expect(createToken('fake-private-key', undefined)).rejects.toEqual(expect.any(Error));
-      expect(createToken('fake-private-key', new Date())).rejects.toEqual(expect.any(Error));
-      expect(createToken('fake-private-key', [])).rejects.toEqual(expect.any(Error));
+      expect(createToken(fakePrivateKey, {})).rejects.toEqual(expect.any(Error));
+      expect(createToken(fakePrivateKey, null)).rejects.toEqual(expect.any(Error));
+      expect(createToken(fakePrivateKey, undefined)).rejects.toEqual(expect.any(Error));
+      expect(createToken(fakePrivateKey, new Date())).rejects.toEqual(expect.any(Error));
+      expect(createToken(fakePrivateKey, [])).rejects.toEqual(expect.any(Error));
     });
   });
 
@@ -36,7 +38,7 @@ describe('Tokens', () => {
         id: 'tok_123abc',
       }));
 
-      const result = await getToken('fake-private-key', 'tok_123abc');
+      const result = await getToken(fakePrivateKey, 'tok_123abc');
       expect(result).toHaveProperty('id');
       expect(result.id).toEqual('tok_123abc');
     });
