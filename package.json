@@ -11,6 +11,7 @@
     "lint": "npx eslint src --fix -c .eslintrc",
     "prebuild": "rimraf dist && npm run test",
     "build": "rollup -c",
+    "build:only": "rollup -c",
     "try": "node tester.js"
   },
   "repository": {
