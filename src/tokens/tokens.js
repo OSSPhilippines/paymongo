@@ -25,7 +25,7 @@ export const createToken = async (secret, data) => {
  * @param {string} secret api private key
  * @param {string} id token id
  */
-export const getToken = async (secret, id) => {
+export const retrieveToken = async (secret, id) => {
   if (!id) throw new Error('Token id is required.');
   return makeRequest({
     secret,
