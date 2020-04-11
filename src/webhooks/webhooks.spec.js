@@ -1,5 +1,7 @@
 import { makeRequest } from '../utils/rest';
 import { createWebhook, getWebhooks, toggleWebhook, updateWebhook } from './webhooks';
+import faker from 'faker';
+const fakePrivateKey = faker.random.uuid();
 
 jest.mock('../utils/rest');
 
@@ -16,16 +18,16 @@ describe('Webhooks', () => {
     }));
 
     it('should return object with id', async () => {
-      const result = await createWebhook('fake-private-key', { a: 1 });
+      const result = await createWebhook(fakePrivateKey, { a: 1 });
       expect(result).toHaveProperty('data.id');
     });
     
     it('should throw', async () => {
-      expect(createWebhook('fake-private-key', {})).rejects.toEqual(expect.any(Error));
-      expect(createWebhook('fake-private-key', null)).rejects.toEqual(expect.any(Error));
-      expect(createWebhook('fake-private-key', undefined)).rejects.toEqual(expect.any(Error));
-      expect(createWebhook('fake-private-key', new Date())).rejects.toEqual(expect.any(Error));
-      expect(createWebhook('fake-private-key', [])).rejects.toEqual(expect.any(Error));
+      expect(createWebhook(fakePrivateKey, {})).rejects.toEqual(expect.any(Error));
+      expect(createWebhook(fakePrivateKey, null)).rejects.toEqual(expect.any(Error));
+      expect(createWebhook(fakePrivateKey, undefined)).rejects.toEqual(expect.any(Error));
+      expect(createWebhook(fakePrivateKey, new Date())).rejects.toEqual(expect.any(Error));
+      expect(createWebhook(fakePrivateKey, [])).rejects.toEqual(expect.any(Error));
     });
   });
 
@@ -35,51 +37,50 @@ describe('Webhooks', () => {
     }));
 
     it('should return data[]', async () => {
-      const result = await getWebhooks('fake-private-key', 'fake-id-123');
+      const result = await getWebhooks(fakePrivateKey, 'fake-id-123');
       expect(Array.isArray(result.data)).toBe(true);
     });
   });
 
   describe('|- toggleWebhook', () => {
     it('should return object with id for action enable', async () => {
+      const id = faker.random.uuid();
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        data: {
-          id: 'fake-id-123',
-        },
+        data: { id },
       }));
       
-      const result = await toggleWebhook('fake-private-key', 'enable', 'fake-id-123');
+      const result = await toggleWebhook(fakePrivateKey, 'enable', id);
       expect(result).toHaveProperty('data.id');
-      expect(result.data.id).toEqual('fake-id-123');
+      expect(result.data.id).toEqual(id);
     });
     
     it('should return object with id for action disable', async () => {
+      const id = faker.random.uuid();
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        data: {
-          id: 'fake-id-123',
-        },
+        data: { id },
       }));
 
-      const result = await toggleWebhook('fake-private-key', 'disable', 'fake-id-123');
+      const result = await toggleWebhook(fakePrivateKey, 'disable', id);
       expect(result).toHaveProperty('data.id');
-      expect(result.data.id).toEqual('fake-id-123');
+      expect(result.data.id).toEqual(id);
     });
 
     it('should throw', async () => {
-      expect(toggleWebhook('fake-private-key', 'not-enable-or-disable', 'fake-id-123')).rejects.toEqual(expect.any(Error));
+      const id = faker.random.uuid();
+      expect(toggleWebhook(fakePrivateKey, 'not-enable-or-disable', id)).rejects.toEqual(expect.any(Error));
     });
   });
   
   describe('|- updateWebhook', () => {
     it('should return object with id', async () => {
-
+      const id = faker.random.uuid();
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id: 'fake-id-123',
+        id
       }));
 
-      const result = await updateWebhook('fake-private-key', { a: 1 });
+      const result = await updateWebhook(fakePrivateKey, { a: 1 });
       expect(result).toHaveProperty('id');
-      expect(result.id).toEqual('fake-id-123');
+      expect(result.id).toEqual(id);
     });
   });
 });
