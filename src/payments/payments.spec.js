@@ -1,7 +1,7 @@
-import { makeRequest } from './rest';
+import { makeRequest } from '../utils/rest';
 import { createPayment, getPayment, getPayments } from './payments';
 
-jest.mock('./rest');
+jest.mock('../utils/rest');
 
 beforeEach(() => {
   makeRequest.mockClear();

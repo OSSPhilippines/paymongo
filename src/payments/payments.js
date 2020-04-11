@@ -1,4 +1,4 @@
-import { makeRequest } from './rest';
+import { makeRequest } from '../utils/rest';
 
 /**
  * These are the required properties
