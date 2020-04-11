@@ -1,5 +1,5 @@
 import { makeRequest } from '../utils/rest';
-import { createToken, getToken } from './tokens';
+import { createToken, retrieveToken } from './tokens';
 import faker from 'faker';
 const fakePrivateKey = faker.random.uuid();
 
@@ -31,14 +31,14 @@ describe('Tokens', () => {
     });
   });
 
-  describe('|- getToken', () => {
+  describe('|- retrieveToken', () => {
     it('should return object with id', async () => {
 
       makeRequest.mockImplementationOnce(() => Promise.resolve({
         id: 'tok_123abc',
       }));
 
-      const result = await getToken(fakePrivateKey, 'tok_123abc');
+      const result = await retrieveToken(fakePrivateKey, 'tok_123abc');
       expect(result).toHaveProperty('id');
       expect(result.id).toEqual('tok_123abc');
     });
