@@ -32,7 +32,7 @@ If you like this project, please give it a star, and consider following the auth
 - [Change Logs](#change-logs)
 - [FAQs](#faqs)
 
-### INSTALLATIONS
+### INSTALLATION
 
 ```bash
 $ npm install paymongo
