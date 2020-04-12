@@ -1,9 +1,9 @@
-import { makeRequest } from './rest';
+import { makeRequest } from '../utils/rest';
 
 /**
  * These are the required properties
- * @param  {string} secret api private key
- * @param  {Object} data payload
+ * @param {string} secret api private key
+ * @param {Object} data payload
  * @param {Object} data.attributes payload attributes
  * @param {string} data.attributes.number credit card number
  * @param {number} data.attributes.exp_month credit card expiry month `float`
@@ -11,6 +11,7 @@ import { makeRequest } from './rest';
  * @param {string} data.attributes.cvc credit card cvc
  */
 export const createToken = async (secret, data) => {
+  console.warn('Deprecated: Tokens are now deprecated. https://developers.paymongo.com/reference#token-resource');
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
     throw new Error('Data is required!');
   return makeRequest({
@@ -25,7 +26,8 @@ export const createToken = async (secret, data) => {
  * @param {string} secret api private key
  * @param {string} id token id
  */
-export const getToken = async (secret, id) => {
+export const retrieveToken = async (secret, id) => {
+  console.warn('Deprecated: Tokens are now deprecated. https://developers.paymongo.com/reference#token-resource');
   if (!id) throw new Error('Token id is required.');
   return makeRequest({
     secret,
