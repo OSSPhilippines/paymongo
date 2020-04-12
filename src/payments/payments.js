@@ -8,8 +8,8 @@ import { makeRequest } from '../utils/rest';
  * @param {number} data.attributes.amount amount int32
  * @param {number} data.attributes.currency Three-letter ISO currency code, in uppercase. PHP is the only supported currency as of the moment.
  * @param {Object} data.attributes.source the source object from checkout
- * @param {string} data.attributes.source.id
- * @param {string} data.attributes.source.type
+ * @param {string} data.attributes.source.id id of a Source resource
+ * @param {string} data.attributes.source.type type of a Source resource. Possible value is 'source'.
  */
 export const createPayment = async (secret, data) => {
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
