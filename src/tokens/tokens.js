@@ -11,6 +11,7 @@ import { makeRequest } from '../utils/rest';
  * @param {string} data.attributes.cvc credit card cvc
  */
 export const createToken = async (secret, data) => {
+  console.warn('Deprecated: Tokens are now deprecated. https://developers.paymongo.com/reference#token-resource');
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
     throw new Error('Data is required!');
   return makeRequest({
@@ -26,6 +27,7 @@ export const createToken = async (secret, data) => {
  * @param {string} id token id
  */
 export const retrieveToken = async (secret, id) => {
+  console.warn('Deprecated: Tokens are now deprecated. https://developers.paymongo.com/reference#token-resource');
   if (!id) throw new Error('Token id is required.');
   return makeRequest({
     secret,
