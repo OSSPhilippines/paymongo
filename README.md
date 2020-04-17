@@ -8,6 +8,8 @@ If you like this project, please give it a star, and consider following the auth
 
 ![npm bundle size](https://img.shields.io/bundlephobia/min/paymongo?style=flat-square) ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/jofftiquez/paymongo/Deploy/master?label=test&style=flat-square) ![npm](https://img.shields.io/npm/v/paymongo?style=flat-square) ![npm](https://img.shields.io/npm/dw/paymongo?style=flat-square)
 
+### Contents
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [Payment Methods](#payment-methods)
@@ -17,17 +19,17 @@ If you like this project, please give it a star, and consider following the auth
   - [Create](#payment-intents---create)
   - [Retrieve](#payment-intents---retrieve)
 - [Sources](#sources)
-  - [Create](#sources-create)
+  - [Create](#sources---create)
 - [Payments](#payments)
-  - [Create](#payments-create)
-  - [List](#payments-list)
-  - [Retrieve](#payments-retrieve)
+  - [Create](#payments---create)
+  - [List](#payments---list)
+  - [Retrieve](#payments---retrieve)
 - [Tokens (Deprecated)](#tokens)
 - [Webhooks](#webhooks)
-  - [Create](#webhooks-create)
-  - [List](#webhooks-list)
+  - [Create](#webhooks---create)
+  - [List](#webhooks---list)
   - [Retrieve](#webhooks-retrieve)
-  - [Toggle (Enable or Disable)](#webhooks-toggle)
+  - [Toggle (Enable or Disable)](#webhooks---toggle)
 - [Test Cards](#test-cards)
 - [Change Logs](#change-logs)
 - [FAQs](#faqs)
@@ -41,6 +43,7 @@ $ npm install paymongo
 ```bash
 $ yarn add paymongo
 ```
+[Go back to top ⮝](#contents)
 
 ### USAGE
 
@@ -51,6 +54,7 @@ import Paymongo from 'paymongo';
 // dashboard under developers tab.
 const paymongo = new Paymongo(process.env.SECRET_KEY);
 ```
+[Go back to top ⮝](#contents)
 
 ### PAYMENT METHODS
 
@@ -102,6 +106,7 @@ const result = await paymongo.paymentMethods.create(data);
  */
 const result = await paymongo.paymentMethods.retrieve(id);
 ```
+[Go back to top ⮝](#contents)
 
 ### PAYMENT INTENTS
 
@@ -172,6 +177,7 @@ const result = await paymongo.paymentIntents.attach(id, data);
   }
 }
 ```
+[Go back to top ⮝](#contents)
 
 ### SOURCES
 
@@ -215,6 +221,7 @@ const result = await paymongo.sources.create(data);
   }
 }
 ```
+[Go back to top ⮝](#contents)
 
 ### PAYMENTS
 
@@ -279,12 +286,15 @@ const result = await paymongo.payments.list();
  */
 const result = await paymongo.payments.retrieve();
 ```
+[Go back to top ⮝](#contents)
 
 ### TOKENS
 
 > DEPRECATED
 
 [Official Docs](https://developers.paymongo.com/reference#token-resource)
+
+[Go back to top ⮝](#contents)
 
 ### WEBHOOKS
 
@@ -354,6 +364,7 @@ Enable or disable a webhook.
  */
 const result = await paymongo.webhooks.toggle(id, action);
 ```
+[Go back to top ⮝](#contents)
 
 ### TEST CARDS
 
@@ -368,11 +379,15 @@ const result = await paymongo.webhooks.toggle(id, action);
 
 More cards [here](https://developers.paymongo.com/docs/testing), including [3D Secure Test Cards](https://developers.paymongo.com/docs/testing#section-3-d-secure-test-card-numbers).
 
+[Go back to top ⮝](#contents)
+
 ### CHANGE LOGS
 
 - New syntax patterned with Stripe's Node.js library.
 - Enhanced method verbs
 - Depricated **Tokens**. See deprecation note [here](https://developers.paymongo.com/reference#token-resource).
+
+[Go back to top ⮝](#contents)
 
 ### FAQs
 
