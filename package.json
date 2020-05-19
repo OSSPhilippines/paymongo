@@ -42,5 +42,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
