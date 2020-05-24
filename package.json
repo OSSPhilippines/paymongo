@@ -43,6 +43,6 @@
     "rollup-plugin-uglify": "^6.0.4"
   },
   "dependencies": {
-    "request": "^2.88.2"
+    "bent": "^7.3.1"
   }
 }
