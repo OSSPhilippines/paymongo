@@ -148,7 +148,7 @@ const result = await paymongo.paymentIntents.create(data);
 
 ```javascript
 /**
- * @param {string} id token id
+ * @param {string} id Payment intent id
  */
 const result = await paymongo.paymentIntents.retrieve(id);
 ```
