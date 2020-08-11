@@ -2,14 +2,14 @@ import { makeRequest } from '../utils/rest';
 
 /**
  * These are the required properties
- * @param {string} secret api private key
- * @param {Object} data payload
- * @param {Object} data.attributes payload attributes
- * @param {number} data.attributes.amount amount int32
+ * @param {string} secret API private key
+ * @param {Object} data Data payload
+ * @param {Object} data.attributes Payload attributes
+ * @param {number} data.attributes.amount Amount int32
  * @param {number} data.attributes.currency Three-letter ISO currency code, in uppercase. PHP is the only supported currency as of the moment.
- * @param {Object} data.attributes.source the source object from checkout
- * @param {string} data.attributes.source.id id of a Source resource
- * @param {string} data.attributes.source.type type of a Source resource. Possible value is 'source'.
+ * @param {Object} data.attributes.source The source object from checkout
+ * @param {string} data.attributes.source.id Id of a Source resource
+ * @param {string} data.attributes.source.type Type of a Source resource. Possible value is 'source'.
  */
 export const createPayment = async (secret, data) => {
   if (Object.entries(data).length === 0 || !data.constructor === Object) 
@@ -23,8 +23,8 @@ export const createPayment = async (secret, data) => {
 };
 
 /**
- * @param {string} secret api private key
- * @param {string} id payment id
+ * @param {string} secret API private key
+ * @param {string} id Payment id
  */
 export const retrievePayment = async (secret, id) => {
   if (!id) throw new Error('Payment id is required.');
@@ -37,7 +37,7 @@ export const retrievePayment = async (secret, id) => {
 };
 
 /**
- * @param {string} secret api private key
+ * @param {string} secret API private key
  */
 export const listPayments = async (secret) => {
   return makeRequest({
