@@ -34,7 +34,7 @@ describe('Webhooks', () => {
     const id = 'hook_123';
     it('should return object with id', async () => {
       makeRequest.mockImplementationOnce(() => Promise.resolve({
-        id
+        id,
       }));
 
       const result = await retrieveWebhook(fakePrivateKey, id);
