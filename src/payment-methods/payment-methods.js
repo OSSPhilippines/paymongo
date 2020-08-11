@@ -23,11 +23,11 @@ export const createPaymentMethod = (secret, data) => {
 };
 
 /**
- * @param {string} secret api private key
- * @param {string} id token id
+ * @param {string} secret API private key
+ * @param {string} id PaymentMethod id
  */
 export const retrievePaymentMethod = (secret, id) => {
-  if (!id) throw new Error('Payment method id is required.');
+  if (!id) throw new Error('PaymentMethod id is required.');
   return makeRequest({
     secret,
     method: 'GET',
