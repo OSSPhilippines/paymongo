@@ -148,7 +148,7 @@ const result = await paymongo.paymentIntents.create(data);
 
 ```javascript
 /**
- * @param {string} id Payment intent id
+ * @param {string} id PaymentIntent id
  */
 const result = await paymongo.paymentIntents.retrieve(id);
 ```
@@ -192,14 +192,14 @@ A Source is a resource to generate your customer's payment instrument. This is n
 ```javascript
 /**
  * These are the required properties
- * @param {Object} data payload
- * @param {Object} data.attributes payload attributes
+ * @param {Object} data Data paypload
+ * @param {Object} data.attributes Payload attributes
  * @param {string} data.attributes.type The type of source. Possible values are gcash and grab_pay.
- * @param {number} data.attributes.amount amount int32
+ * @param {number} data.attributes.amount Amount int32
  * @param {string} data.attributes.currency Three-letter ISO currency code, in uppercase. PHP is the only supported currency as of the moment.
  * @param {Object} data.attributes.redirect
- * @param {string} data.attributes.redirect.success success url
- * @param {string} data.attributes.redirect.failed error url
+ * @param {string} data.attributes.redirect.success Success url
+ * @param {string} data.attributes.redirect.failed Error url
  */
 const result = await paymongo.sources.create(data);
 ```
@@ -236,13 +236,13 @@ A `Payment` resource is an attempt by your customer to send you money in exchang
 ```javascript
 /**
  * These are the required properties
- * @param {Object} data payload
- * @param {Object} data.attributes payload attributes
- * @param {number} data.attributes.amount amount int32
+ * @param {Object} data Data payload
+ * @param {Object} data.attributes Payload attributes
+ * @param {number} data.attributes.amount Amount int32
  * @param {number} data.attributes.currency Three-letter ISO currency code, in uppercase. PHP is the only supported currency as of the moment.
- * @param {Object} data.attributes.source the source object from checkout
- * @param {string} data.attributes.source.id id of a Source resource
- * @param {string} data.attributes.source.type type of a Source resource. Possible value is 'source'.
+ * @param {Object} data.attributes.source The source object from checkout
+ * @param {string} data.attributes.source.id Id of a Source resource
+ * @param {string} data.attributes.source.type Type of a Source resource. Possible value is 'source'.
  */
 const result = await paymongo.payments.create(data);
 ```
@@ -282,7 +282,7 @@ const result = await paymongo.payments.list();
 
 ```javascript
 /**
- * @param {string} id payment id
+ * @param {string} id Payment id
  */
 const result = await paymongo.payments.retrieve();
 ```
@@ -309,8 +309,8 @@ A `Webhook` resource primarily refers to a certain URL where we send events that
 ```javascript
 /**
  * These are the required properties
- * @param {Object} data payload
- * @param {Object} data.attributes payload attributes
+ * @param {Object} data Data payload
+ * @param {Object} data.attributes Payload attributes
  * @param {string} data.attributes.url The destination URL of the events that happened from your account. Please make sure that the URL is publicly accessible in order for you to receive the event.
  * @param {string[]} data.attributes.events The list of events to be sent to this webhook. Possible value in the meantime is source.chargeable.
  */
@@ -359,8 +359,8 @@ Enable or disable a webhook.
 
 ```javascript
 /**
- * @param {string} id webhook id
- * @param {string} action 'enable' or 'disable'
+ * @param {string} id Webhook id
+ * @param {string} action Toggle options 'enable' or 'disable'
  */
 const result = await paymongo.webhooks.toggle(id, action);
 ```
