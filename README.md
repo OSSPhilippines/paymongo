@@ -86,7 +86,7 @@ const result = await paymongo.paymentMethods.create(data);
 {
   data: {
     attributes: {
-      type: 'card' // The only available type for now is 'card'.
+      type: 'card', // The only available type for now is 'card'.
       details: {
         card_number: '4343434343434345',
         exp_month: 02,
