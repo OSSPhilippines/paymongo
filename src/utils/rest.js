@@ -1,32 +1,60 @@
-import request from 'request';
+import bent from 'bent';
 const PAYMONGO_API_URL = 'https://api.paymongo.com/v1';
 
 export const makeRequest = async (opts) => {
-  return new Promise((resolve, reject) => {
-    const { secret, method, path, data } = opts;
-    const options = {
-      method,
-      url: `${PAYMONGO_API_URL}/${path}`,
-      json: true,
-      auth: {
-        username: secret,
-        password: '',
-      },
-    };
+  const {
+    data,
+    method,
+    path,
+    secret,
+  } = opts;
 
-    if (data) {
-      options.body = data;
-    }
+  /**
+   * Construct authorization header using secret key
+   */
+  const headers = {
+    'Authorization': `Basic ${Buffer.from(secret).toString('base64')}`,
+  };
+  
+  /**
+   * Construct the base request function
+   */
+  const request = bent(PAYMONGO_API_URL, (method || 'GET'), 'json', headers, 200);
 
-    request(options, (err, res, body) => {
-      if (err) reject(err);
-      if (body.errors) {
-        reject({
-          ...body.errors[0],
-          message: body.errors[0].detail,
-        });
-      }
-      resolve(body);
+  /**
+   * Require API endpoint option
+   */
+  if (!path) throw new Error('API endpoint required');
+
+  /**
+   * Define endpoint-specific parameter array
+   */
+  const requestOptions = [
+    path,
+  ];
+
+  /**
+   * For requests that requires payloads, push the payload
+   * to the request parameter array
+   */
+  if (data) {
+    requestOptions.push(data);
+  }
+
+  /**
+   * Call endpoint and return promise returned
+   */
+  return request(...requestOptions)
+    .catch(async err => {
+      /**
+       * Error-handling is based on the previous implementation
+       */
+      const { errors } = await err.json();
+      const [firstError] = errors;
+
+      throw {
+        ...firstError,
+        message: firstError.detail,
+      };
     });
-  });
 };
