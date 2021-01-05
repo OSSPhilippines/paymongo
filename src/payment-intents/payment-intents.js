@@ -21,11 +21,11 @@ export const createPaymentIntent = (secret, data) => {
 };
 
 /**
- * @param {string} secret api private key
- * @param {string} id token id
+ * @param {string} secret API private key
+ * @param {string} id PaymentIntent id
  */
 export const retrievePaymentIntent = (secret, id) => {
-  if (!id) throw new Error('Payment method id is required.');
+  if (!id) throw new Error('PaymentIntent id is required.');
   return makeRequest({
     secret,
     method: 'GET',
