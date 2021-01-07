@@ -1,5 +1,5 @@
 import { makeRequest } from '../utils/rest';
-import { createSource } from './sources';
+import { createSource, retrieveSource } from './sources';
 import faker from 'faker';
 const fakePrivateKey = faker.random.uuid();
 
@@ -26,6 +26,18 @@ describe('Sources', () => {
       expect(createSource(fakePrivateKey, undefined)).rejects.toEqual(expect.any(Error));
       expect(createSource(fakePrivateKey, new Date())).rejects.toEqual(expect.any(Error));
       expect(createSource(fakePrivateKey, [])).rejects.toEqual(expect.any(Error));
+    });
+  });
+
+  describe('|- retrieveSource', () => {
+    it('should return object with id', async () => {
+      makeRequest.mockImplementationOnce(() => Promise.resolve({
+        id: 'src_123abc',
+      }));
+
+      const result = await retrieveSource(fakePrivateKey, 'src_123abc');
+      expect(result).toHaveProperty('id');
+      expect(result.id).toEqual('src_123abc');
     });
   });
 });
