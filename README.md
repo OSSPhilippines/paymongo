@@ -20,6 +20,7 @@ If you like this project, please give it a star, and consider following the auth
   - [Retrieve](#payment-intents---retrieve)
 - [Sources](#sources)
   - [Create](#sources---create)
+  - [Retrieve](#sources---retrieve)
 - [Payments](#payments)
   - [Create](#payments---create)
   - [List](#payments---list)
@@ -220,6 +221,15 @@ const result = await paymongo.sources.create(data);
     }
   }
 }
+```
+
+#### Sources - Retrieve
+
+```javascript
+/**
+ * @param {string} id Source id
+ */
+const result = await paymongo.sources.retrieve(id);
 ```
 [Go back to top ⮝](#contents)
 

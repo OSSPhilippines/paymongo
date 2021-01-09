@@ -1,7 +1,7 @@
 import { createPaymentMethod, retrievePaymentMethod } from './payment-methods/index';
 import { createPaymentIntent, retrievePaymentIntent, attachToPaymentIntent } from './payment-intents/index';
 import { createToken, retrieveToken } from './tokens/index';
-import { createSource } from './sources/index';
+import { createSource, retrieveSource } from './sources/index';
 import { createPayment, retrievePayment, listPayments } from './payments/index';
 import { createWebhook, retrieveWebhook, listWebhooks, toggleWebhook } from './webhooks/index';
 
@@ -25,6 +25,7 @@ export default class Paymongo {
     // SOURCES
     this.sources = {
       create: (data) => createSource(this.secret, data),
+      retrieve: (id) => retrieveSource(this.secret, id),
     };
     // PAYMENTS
     this.payments = {

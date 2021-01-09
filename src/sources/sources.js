@@ -22,3 +22,17 @@ export const createSource = async (secret, data) => {
     data,
   });
 };
+
+
+/**
+ * @param {string} secret API private key
+ * @param {string} id Source id
+ */
+export const retrieveSource = async (secret, id) => {
+  if (!id) throw new Error('Source id is required.');
+  return makeRequest({
+    secret,
+    method: 'GET',
+    path: `/sources/${id}`,
+  });
+};
