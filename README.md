@@ -393,9 +393,10 @@ More cards [here](https://developers.paymongo.com/docs/testing), including [3D S
 
 ### CHANGE LOGS
 
+- Add `retrieve` function to sources.
 - New syntax patterned with Stripe's Node.js library.
-- Enhanced method verbs
-- Depricated **Tokens**. See deprecation note [here](https://developers.paymongo.com/reference#token-resource).
+- Enhance method verbs
+- Deprecate **Tokens**. See deprecation note [here](https://developers.paymongo.com/reference#token-resource).
 
 [Go back to top ⮝](#contents)
 
