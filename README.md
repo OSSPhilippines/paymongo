@@ -1,3 +1,6 @@
+
+<img src="./paymongo-node.png"/>
+
 # Paymongo for Node.js
 
 A lighweight Node.js client for Paymongo API.
