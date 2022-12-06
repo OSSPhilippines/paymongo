@@ -1,5 +1,6 @@
+import { createLink, retrieveLink, getLinkByReference, archiveLink, unarchiveLink } from './links/index';
 import { createPayment, retrievePayment, listPayments } from './payments/index';
-import { createPaymentIntent, retrievePaymentIntent, attachToPaymentIntent } from './payment-intents/index';
+import { createPaymentIntent, retrievePaymentIntent, attachToPaymentIntent, capturePaymentIntent, cancelPaymentIntent } from './payment-intents/index';
 import { createPaymentMethod, retrievePaymentMethod } from './payment-methods/index';
 import { createRefund, retrieveRefund, listRefunds } from './refunds/index';
 import { createSource, retrieveSource } from './sources/index';
@@ -23,6 +24,8 @@ export default class Paymongo {
       create: (data) => createPaymentIntent(this.secret, data),
       retrieve: (id) => retrievePaymentIntent(this.secret, id),
       attach: (id, data) => attachToPaymentIntent(this.secret, id, data),
+      capture: (id) => capturePaymentIntent(id),
+      cancel: (id) => cancelPaymentIntent(id),
     };
 
     // SOURCES
@@ -57,6 +60,15 @@ export default class Paymongo {
       create: (data) => createRefund(this.secret, data),
       retrieve: (id) => retrieveRefund(this.secret, id),
       list: () => listRefunds(this.secret),
+    };
+
+    // LINKS
+    this.links = {
+      create: (data) => createLink(this.secret, data),
+      retrieve: (id) => retrieveLink(this.secret, id),
+      getByRef: (reference_number) => getLinkByReference(this.secret, reference_number),
+      archive: (id) => archiveLink(this.secret, id),
+      unarchive: (id) => unarchiveLink(this.secret, id),
     };
 
     Object.freeze(this.secret);
