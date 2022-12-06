@@ -51,3 +51,30 @@ export const attachToPaymentIntent = (secret, id, data) => {
     data,
   });
 };
+
+
+/**
+ * @param {string} secret API private key
+ * @param {string} id PaymentIntent id
+ */
+ export const capturePaymentIntent = (secret, id) => {
+  if (!id) throw new Error('PaymentIntent id is required.');
+  return makeRequest({
+    secret,
+    method: 'POST',
+    path: `/payment_intents/${id}/capture`,
+  });
+};
+
+/**
+ * @param {string} secret API private key
+ * @param {string} id PaymentIntent id
+ */
+ export const cancelPaymentIntent = (secret, id) => {
+  if (!id) throw new Error('PaymentIntent id is required.');
+  return makeRequest({
+    secret,
+    method: 'POST',
+    path: `/payment_intents/${id}/cancel`,
+  });
+};
