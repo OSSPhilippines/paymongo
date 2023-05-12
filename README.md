@@ -17,4 +17,4 @@ Maintaining open source projects regularly alone can lead to delay of updates an
 
 # New and updated documentation
 
-> https://jofftiquez.gitbook.io/paymongo/
+> [https://jofftiquez.gitbook.io/paymongo/](https://paymongo.ossph.org/)
