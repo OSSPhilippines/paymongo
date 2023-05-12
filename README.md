@@ -15,6 +15,8 @@ If you like this project, please give it a star, and consider following the auth
 
 Maintaining open source projects regularly alone can lead to delay of updates and lower quality code. That's why moving forward, I decided to get more help by moving this project from my [personal GitHub account](https://github.com/jofftiquez) to [OSSPH's GitHub organization account](https://github.com/ossphilippines). This way I can get more help directly from OSSPH's amazing community, and hopefully, it will yield faster updates and more eyes watching the project. Thank you for your support! As always, please check the updated documentation below. If you're interested in OSSPH, please don't hesitate to learn more at https://ossph.org.
 
-# New and updated documentation
+# New documentnation powered by GitBook
 
 > [https://paymongo.ossph.org/](https://paymongo.ossph.org/)
+
+<a href="https://paymongo.ossph.org/" target="_blank"><img src="./gitbook.png"></a>
