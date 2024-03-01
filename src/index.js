@@ -9,8 +9,13 @@ import { createWebhook, retrieveWebhook, listWebhooks, toggleWebhook } from './w
 
 export default class Paymongo {
   constructor (secret) {
-    if (Paymongo.instance instanceof Paymongo) return Paymongo.instance;
     if (!secret) throw new Error('API key is required!');
+
+    if (Paymongo.instance instanceof Paymongo) {
+      if (Paymongo.instance.secret === secret) {
+        return Paymongo.instance;
+      }
+    }
     this.secret = secret;
 
     // PAYMENT METHODS
