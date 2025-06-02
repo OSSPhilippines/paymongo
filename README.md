@@ -20,3 +20,5 @@ Maintaining open source projects regularly alone can lead to delay of updates an
 > [https://paymongo.ossph.org/](https://paymongo.ossph.org/)
 
 <a href="https://paymongo.ossph.org/" target="_blank"><img src="./gitbook.png"></a>
+
+<!-- GitAds-Verify: JMJVVDIV2KCQB2X85R7W65ZMVYT8ZLZO -->
