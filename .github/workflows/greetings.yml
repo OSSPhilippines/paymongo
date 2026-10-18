@@ -1,13 +1,22 @@
 name: Greetings
 
-on: [issues]
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   greeting:
+    name: Greet First-Time Contributors
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GH_TOKEN }}
-        issue-message: 'Hello! Thank you for submitting an issue. [This is an auto-generated message]'
-        pr-message: 'Hello! Thank you for your interest in making this project better. [This is an auto-generated message]'
+      - name: Welcome first-time issue contributors
+        uses: actions/first-interaction@v3
+        with:
+          issue_message: >
+            Hello! Thank you for submitting an issue.
+            [This is an auto-generated message]
